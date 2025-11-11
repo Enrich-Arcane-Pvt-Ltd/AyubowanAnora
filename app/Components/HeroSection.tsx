@@ -1,23 +1,60 @@
-import React from "react";
-import { CalendarDays, MapPin } from "lucide-react";
+"use client";
 
-const HeroSection = () => (
-  <section className="relative h-screen flex flex-col items-center justify-center bg-gradient-to-br from-purple-700 to-blue-600 text-white text-center">
-    <div className="bg-black/30 absolute inset-0" />
-    <div className="relative z-10 space-y-4">
-      <h1 className="text-4xl font-bold md:text-6xl">AYUBOWAN–ANORA 2026</h1>
-      <p className="text-lg md:text-xl">Exhibition • Trade Fair • Book Fair</p>
-      <div className="flex flex-col items-center space-y-2 mt-4">
-        <p className="flex items-center gap-2">
-          <MapPin className="w-5 h-5" /> Etisalat Academy, Dubai, UAE
-        </p>
-        <p className="flex items-center gap-2">
-          <CalendarDays className="w-5 h-5" /> March 28–29, 2026 | 10:00 AM – 10:00 PM
-        </p>
-        <p className="text-yellow-300 font-semibold">Free Entry for All Visitors & Buyers</p>
+import React from "react";
+import Image from "next/image";
+
+const HeroSection = () => {
+  const images = [
+    "/images/img1.jpg",
+    "/images/img2.jpg",
+    "/images/img3.jpg",
+    "/images/img4.jpg",
+    "/images/img5.jpg",
+    "/images/img6.jpg",
+  ];
+
+  return (
+    <section className="relative flex flex-col items-center justify-center bg-gradient-to-br from-purple-700 to-blue-600 text-white text-center py-16 md:py-20 overflow-hidden">
+     
+      <div className="absolute inset-0 bg-black/20" />
+
+      
+      <div className="relative z-10 flex justify-center flex-wrap gap-5 md:gap-6 mb-10 px-4">
+        {images.map((src, index) => (
+          <div
+            key={index}
+            className="relative overflow-hidden shadow-lg"
+            style={{
+              width: "150px",
+              height: "240px",
+              clipPath: "polygon(10% 0, 100% 0, 90% 100%, 0% 100%)",
+              transform: `rotate(${index % 2 === 0 ? "-5deg" : "5deg"})`,
+              transition: "transform 0.3s ease",
+            }}
+          >
+            <Image
+              src={src}
+              alt={`Image ${index + 1}`}
+              fill
+              className="object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+        ))}
       </div>
-    </div>
-  </section>
-);
+
+      
+      <div className="relative z-10 flex justify-center">
+        <Image
+          src="/images/img7.png"
+          alt="Ayubowan Anora 2026 Logo"
+          width={300}
+          height={120}
+          className="object-contain rounded-lg"
+          priority
+        />
+      </div>
+    </section>
+  );
+};
 
 export default HeroSection;
