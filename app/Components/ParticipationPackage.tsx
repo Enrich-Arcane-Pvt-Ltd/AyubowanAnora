@@ -29,7 +29,6 @@ const ParticipationPackage: React.FC = () => {
     <section className="min-h-screen bg-gradient-to-b from-purple-700 to-blue-600 text-white py-12 sm:py-16 px-4 sm:px-8 md:px-16 lg:px-24 font-[Exhibition]">
       <div className="max-w-6xl mx-auto space-y-10 sm:space-y-14">
 
-       
         <div>
           <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-4">Key Highlights</h3>
           <ul className="list-disc pl-5 sm:pl-6 space-y-2 text-sm sm:text-base md:text-lg leading-relaxed">
@@ -41,7 +40,6 @@ const ParticipationPackage: React.FC = () => {
 
         <Divider />
 
-        
         <div>
           <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-4">
             Entrepreneur Participation Package
@@ -52,7 +50,6 @@ const ParticipationPackage: React.FC = () => {
             ensure maximum exposure and convenience.
           </p>
 
-        
           <div className="mb-6">
             <h3 className="text-lg sm:text-xl font-semibold flex items-center gap-2 mb-3">
               <Plane className="w-5 h-5 text-yellow-300" /> Travel & Accommodation
@@ -71,7 +68,6 @@ const ParticipationPackage: React.FC = () => {
             </ul>
           </div>
 
-         
           <div className="mb-6">
             <h3 className="text-lg sm:text-xl font-semibold flex items-center gap-2 mb-3">
               <Building2 className="w-5 h-5 text-yellow-300" /> Exhibition Facilities
@@ -86,7 +82,6 @@ const ParticipationPackage: React.FC = () => {
             </ul>
           </div>
 
-         
           <div>
             <h3 className="text-lg sm:text-xl font-semibold flex items-center gap-2 mb-3">
               <Globe2 className="w-5 h-5 text-yellow-300" /> Marketing & Promotions
@@ -110,7 +105,6 @@ const ParticipationPackage: React.FC = () => {
 
         <Divider />
 
-       
         <div>
           <h3 className="text-lg sm:text-xl font-semibold mb-4">
             Benefits to Participants
@@ -137,7 +131,6 @@ const ParticipationPackage: React.FC = () => {
 
         <Divider />
 
-        
         <div>
           <h3 className="text-lg sm:text-xl font-semibold mb-4">
             Participation Eligibility
@@ -160,7 +153,6 @@ const ParticipationPackage: React.FC = () => {
 
         <Divider />
 
-        
         <div>
           <h3 className="text-lg sm:text-xl font-semibold mb-4">Event Summary</h3>
           <div className="overflow-x-auto rounded-lg border border-white/30">
@@ -195,7 +187,6 @@ const ParticipationPackage: React.FC = () => {
         </div>
 
         <Divider />
-
         
         <div>
           <h3 className="text-lg sm:text-xl font-semibold mb-3">
@@ -236,7 +227,6 @@ const ParticipationPackage: React.FC = () => {
         </div>
 
         <Divider />
-
         
         <div>
           <h3 className="text-lg sm:text-xl font-semibold mb-2">Presented by</h3>
