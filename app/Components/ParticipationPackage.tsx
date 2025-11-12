@@ -5,11 +5,23 @@ import { Plane, Building2, Globe2, Mail, Phone, Globe } from "lucide-react";
 
 const ParticipationPackage: React.FC = () => {
   const highlights = [
-    "Over 60 exhibitors representing diverse industries.",
-    "Book Fair Pavilion featuring Sri Lankan authors and publishers.",
-    "B2B networking sessions with international buyers and distributors.",
-    "Cultural showcases celebrating Sri Lankan heritage.",
-    "Free admission for all visitors and buyers.",
+    <>
+      Over <strong>60 exhibitors</strong> representing diverse industries.
+    </>,
+    <>
+      <strong>Book Fair Pavilion</strong> featuring Sri Lankan authors and
+      publishers.
+    </>,
+    <>
+      <strong>B2B networking sessions</strong> with international buyers and
+      distributors.
+    </>,
+    <>
+      <strong>Cultural Showcases</strong> celebrating Sri Lankan heritage.
+    </>,
+    <>
+      <strong>Free admission</strong> for all visitors and buyers.
+    </>,
   ];
   const Divider = () => <hr className="border-t border-white/30 my-10 sm:my-12" />;
 
