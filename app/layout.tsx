@@ -5,6 +5,8 @@ export const metadata = {
   description: "Coming soon page for Ayubowan Anora",
 };
 
+// Comment
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
