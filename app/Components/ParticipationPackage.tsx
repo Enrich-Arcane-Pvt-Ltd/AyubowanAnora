@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
 import { Plane, Building2, Globe2, Mail, Phone, Globe } from "lucide-react";
 
 const ParticipationPackage: React.FC = () => {
@@ -15,40 +14,29 @@ const ParticipationPackage: React.FC = () => {
 
   const Divider = () => <hr className="border-t border-white/30 my-6" />;
 
-  
   const IconWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-    <motion.div
-      whileHover={{ scale: 1.15 }}
-      whileTap={{ scale: 0.95 }}
-      initial={{ opacity: 0, y: -10 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4 }}
+    <div
       className="flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-md 
                  bg-white/20 backdrop-blur-md border border-white/30 shadow-md 
-                 hover:bg-white/30 hover:shadow-lg transition-all duration-300"
+                 hover:bg-white/30 hover:shadow-lg transition-all duration-300 transform hover:scale-110 active:scale-95"
     >
-      <div className="text-white">
-        {children}
-      </div>
-    </motion.div>
+      <div className="text-white">{children}</div>
+    </div>
   );
 
   const Card: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-    <motion.div
-      whileHover={{ scale: 1.01 }}
-      transition={{ duration: 0.3 }}
+    <div
       className="bg-white/10 backdrop-blur-md rounded-2xl p-6 sm:p-8 shadow-lg border border-white/20 
-                 hover:shadow-2xl hover:border-white/40 transition-all duration-300"
+                 hover:shadow-2xl hover:border-white/40 transition-all duration-300 transform hover:scale-[1.01]"
     >
       {children}
-    </motion.div>
+    </div>
   );
 
   return (
     <section className="min-h-screen bg-gradient-to-b from-purple-700 via-indigo-700 to-blue-600 text-white py-12 sm:py-16 px-4 sm:px-8 md:px-16 lg:px-24 font-[Exhibition]">
       <div className="max-w-6xl mx-auto space-y-10 sm:space-y-14">
 
-       
         <Card>
           <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-4 flex items-center gap-3">
             <IconWrapper><Globe2 className="w-6 h-6" /></IconWrapper>
@@ -56,19 +44,13 @@ const ParticipationPackage: React.FC = () => {
           </h3>
           <ul className="list-disc pl-5 sm:pl-6 space-y-2 text-sm sm:text-base md:text-lg leading-relaxed">
             {highlights.map((item, i) => (
-              <motion.li
-                key={i}
-                initial={{ opacity: 0, x: -10 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: i * 0.1 }}
-              >
+              <li key={i} className="transition-opacity duration-500 opacity-100">
                 {item}
-              </motion.li>
+              </li>
             ))}
           </ul>
         </Card>
 
-        
         <Card>
           <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-4">
             Entrepreneur Participation Package
@@ -79,7 +61,6 @@ const ParticipationPackage: React.FC = () => {
           </p>
 
           <div className="space-y-6">
-         
             <div>
               <h3 className="text-lg sm:text-xl font-semibold flex items-center gap-3 mb-3">
                 <IconWrapper><Plane className="w-6 h-6" /></IconWrapper>
@@ -94,7 +75,6 @@ const ParticipationPackage: React.FC = () => {
 
             <Divider />
 
-         
             <div>
               <h3 className="text-lg sm:text-xl font-semibold flex items-center gap-3 mb-3">
                 <IconWrapper><Building2 className="w-6 h-6" /></IconWrapper>
@@ -108,7 +88,6 @@ const ParticipationPackage: React.FC = () => {
 
             <Divider />
 
-        
             <div>
               <h3 className="text-lg sm:text-xl font-semibold flex items-center gap-3 mb-3">
                 <IconWrapper><Globe2 className="w-6 h-6" /></IconWrapper>
@@ -123,7 +102,6 @@ const ParticipationPackage: React.FC = () => {
           </div>
         </Card>
 
-     
         <Card>
           <h3 className="text-lg sm:text-xl font-semibold mb-4">Benefits to Participants</h3>
           <ul className="list-disc pl-5 sm:pl-6 space-y-2">
@@ -134,7 +112,6 @@ const ParticipationPackage: React.FC = () => {
           </ul>
         </Card>
 
-        
         <Card>
           <h3 className="text-lg sm:text-xl font-semibold mb-4">Participation Eligibility</h3>
           <ul className="list-disc pl-5 sm:pl-6 space-y-2">
@@ -143,7 +120,6 @@ const ParticipationPackage: React.FC = () => {
           </ul>
         </Card>
 
-        
         <Card>
           <h3 className="text-lg sm:text-xl font-semibold mb-4 flex items-center gap-3">
             <IconWrapper><Globe className="w-6 h-6" /></IconWrapper>
@@ -196,7 +172,6 @@ const ParticipationPackage: React.FC = () => {
           </ul>
         </Card>
 
-        
         <Card>
           <h3 className="text-lg sm:text-xl font-semibold mb-2">Presented by</h3>
           <div className="flex items-center gap-3">
