@@ -12,11 +12,21 @@ const ParticipationPackage: React.FC = () => {
     <><strong>Free admission</strong> for all visitors and buyers.</>,
   ];
 
-  const Divider = () => <hr className="border-t border-white/30 my-6" />;
+  const Divider = () => <hr className="border-t border-white/30 my-8" />;
+
+  const GradientIconWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+    <div
+      className="flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-2xl
+                 bg-gradient-to-br from-purple-500 via-indigo-500 to-blue-400 shadow-lg 
+                 hover:shadow-xl hover:scale-110 active:scale-95 transition-all duration-300"
+    >
+      <div className="text-white">{children}</div>
+    </div>
+  );
 
   const IconWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => (
     <div
-      className="flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-md 
+      className="flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-xl 
                  bg-white/20 backdrop-blur-md border border-white/30 shadow-md 
                  hover:bg-white/30 hover:shadow-lg transition-all duration-300 transform hover:scale-110 active:scale-95"
     >
@@ -26,7 +36,7 @@ const ParticipationPackage: React.FC = () => {
 
   const Card: React.FC<{ children: React.ReactNode }> = ({ children }) => (
     <div
-      className="bg-white/10 backdrop-blur-md rounded-2xl p-6 sm:p-8 shadow-lg border border-white/20 
+      className="bg-white/10 backdrop-blur-md rounded-3xl p-10 sm:p-12 shadow-xl border border-white/20 
                  hover:shadow-2xl hover:border-white/40 transition-all duration-300 transform hover:scale-[1.01]"
     >
       {children}
@@ -34,39 +44,39 @@ const ParticipationPackage: React.FC = () => {
   );
 
   return (
-    <section className="min-h-screen bg-gradient-to-b from-purple-700 via-indigo-700 to-blue-600 text-white py-12 sm:py-16 px-4 sm:px-8 md:px-16 lg:px-24 font-[Exhibition]">
-      <div className="max-w-6xl mx-auto space-y-10 sm:space-y-14">
+    <section className="min-h-screen bg-gradient-to-b from-purple-700 via-indigo-700 to-blue-600 text-white py-20 px-6 sm:px-10 md:px-20 lg:px-32 font-[Exhibition]">
+      <div className="max-w-6xl mx-auto space-y-14 sm:space-y-20">
 
+        
         <Card>
-          <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-4 flex items-center gap-3">
-            <IconWrapper><Globe2 className="w-6 h-6" /></IconWrapper>
+          <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 flex items-center gap-4">
+            <GradientIconWrapper><Globe2 className="w-8 h-8" /></GradientIconWrapper>
             Key Highlights
           </h3>
-          <ul className="list-disc pl-5 sm:pl-6 space-y-2 text-sm sm:text-base md:text-lg leading-relaxed">
+          <ul className="list-disc pl-8 sm:pl-10 space-y-3 text-lg sm:text-xl md:text-2xl leading-relaxed">
             {highlights.map((item, i) => (
-              <li key={i} className="transition-opacity duration-500 opacity-100">
-                {item}
-              </li>
+              <li key={i}>{item}</li>
             ))}
           </ul>
         </Card>
 
+     
         <Card>
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
             Entrepreneur Participation Package
           </h2>
-          <p className="mb-6 text-sm sm:text-base md:text-lg leading-relaxed">
+          <p className="mb-8 text-lg sm:text-xl md:text-2xl leading-relaxed">
             Each confirmed participant will enjoy a{" "}
             <strong>comprehensive business and travel package</strong> designed to ensure maximum exposure and convenience.
           </p>
 
-          <div className="space-y-6">
+          <div className="space-y-8">
             <div>
-              <h3 className="text-lg sm:text-xl font-semibold flex items-center gap-3 mb-3">
-                <IconWrapper><Plane className="w-6 h-6" /></IconWrapper>
+              <h3 className="text-2xl sm:text-3xl font-semibold flex items-center gap-4 mb-4">
+                <IconWrapper><Plane className="w-8 h-8" /></IconWrapper>
                 Travel & Accommodation
               </h3>
-              <ul className="list-disc pl-5 sm:pl-6 space-y-2">
+              <ul className="list-disc pl-8 sm:pl-10 space-y-3 text-lg sm:text-xl md:text-2xl">
                 <li><strong>UAE Visa</strong> valid for <strong>one (1) month</strong></li>
                 <li><strong>Round-trip air tickets</strong> (Sri Lanka ↔ UAE)</li>
                 <li><strong>3-star hotel accommodation</strong> for <strong>4 days / 3 nights</strong> (with breakfast)</li>
@@ -76,12 +86,12 @@ const ParticipationPackage: React.FC = () => {
             <Divider />
 
             <div>
-              <h3 className="text-lg sm:text-xl font-semibold flex items-center gap-3 mb-3">
-                <IconWrapper><Building2 className="w-6 h-6" /></IconWrapper>
+              <h3 className="text-2xl sm:text-3xl font-semibold flex items-center gap-4 mb-4">
+                <IconWrapper><Building2 className="w-8 h-8" /></IconWrapper>
                 Exhibition Facilities
               </h3>
-              <ul className="list-disc pl-5 sm:pl-6 space-y-2">
-                <li><strong>One exhibition stall (3m × 3m)</strong> with company branding <em>(Artwork to be submitted by the company)</em></li>
+              <ul className="list-disc pl-8 sm:pl-10 space-y-3 text-lg sm:text-xl md:text-2xl">
+                <li><strong>One exhibition stall (3m × 3m)</strong> with company branding <em>(Artwork to be submitted)</em></li>
                 <li>Standard furniture, lighting, and power supply included</li>
               </ul>
             </div>
@@ -89,48 +99,31 @@ const ParticipationPackage: React.FC = () => {
             <Divider />
 
             <div>
-              <h3 className="text-lg sm:text-xl font-semibold flex items-center gap-3 mb-3">
-                <IconWrapper><Globe2 className="w-6 h-6" /></IconWrapper>
+              <h3 className="text-2xl sm:text-3xl font-semibold flex items-center gap-4 mb-4">
+                <IconWrapper><Globe2 className="w-8 h-8" /></IconWrapper>
                 Marketing & Promotions
               </h3>
-              <ul className="list-disc pl-5 sm:pl-6 space-y-2">
+              <ul className="list-disc pl-8 sm:pl-10 space-y-3 text-lg sm:text-xl md:text-2xl">
                 <li><strong>Digital marketing campaigns</strong> in both the UAE and Sri Lanka</li>
-                <li><strong>Traditional marketing exposure</strong> through press, media, and print channels</li>
-                <li>Featured coverage on <strong>event website, social media, and media releases</strong></li>
+                <li><strong>Traditional media coverage</strong> including press, radio, and print</li>
+                <li>Featured on <strong>event website, social media, and promotional materials</strong></li>
               </ul>
             </div>
           </div>
         </Card>
 
+      
         <Card>
-          <h3 className="text-lg sm:text-xl font-semibold mb-4">Benefits to Participants</h3>
-          <ul className="list-disc pl-5 sm:pl-6 space-y-2">
-            <li>Direct access to <strong>buyers and distributors</strong> across the UAE and GCC.</li>
-            <li>Opportunity to <strong>secure export orders and collaborations.</strong></li>
-            <li>Extensive <strong>brand visibility</strong> and media exposure.</li>
-            <li>Experience the <strong>UAE’s vibrant trade environment</strong> and cultural diversity.</li>
-          </ul>
-        </Card>
-
-        <Card>
-          <h3 className="text-lg sm:text-xl font-semibold mb-4">Participation Eligibility</h3>
-          <ul className="list-disc pl-5 sm:pl-6 space-y-2">
-            <li>Open to <strong>registered Sri Lankan SMEs, manufacturers, exporters, and service providers</strong>.</li>
-            <li>Products must comply with <strong>UAE import standards</strong> and quality guidelines.</li>
-          </ul>
-        </Card>
-
-        <Card>
-          <h3 className="text-lg sm:text-xl font-semibold mb-4 flex items-center gap-3">
-            <IconWrapper><Globe className="w-6 h-6" /></IconWrapper>
+          <h3 className="text-2xl sm:text-3xl font-semibold mb-6 flex items-center gap-4">
+            <GradientIconWrapper><Globe className="w-8 h-8" /></GradientIconWrapper>
             Event Summary
           </h3>
-          <div className="overflow-x-auto rounded-lg border border-white/20">
-            <table className="w-full text-sm sm:text-base text-left border-collapse">
+          <div className="overflow-x-auto rounded-lg border border-white/30">
+            <table className="w-full text-lg sm:text-xl md:text-2xl text-left border-collapse">
               <thead>
                 <tr className="bg-white/10">
-                  <th className="font-bold py-2 px-3 w-1/3">Category</th>
-                  <th className="font-bold py-2 px-3">Details</th>
+                  <th className="font-bold py-3 px-4 w-1/3">Category</th>
+                  <th className="font-bold py-3 px-4">Details</th>
                 </tr>
               </thead>
               <tbody>
@@ -144,8 +137,8 @@ const ParticipationPackage: React.FC = () => {
                   ["Purpose", "To connect Sri Lankan SMEs directly with global buyers"],
                 ].map(([label, value], i) => (
                   <tr key={i} className="odd:bg-white/5 even:bg-transparent">
-                    <td className="font-semibold py-2 px-3">{label}</td>
-                    <td className="py-2 px-3">{value}</td>
+                    <td className="font-semibold py-3 px-4">{label}</td>
+                    <td className="py-3 px-4">{value}</td>
                   </tr>
                 ))}
               </tbody>
@@ -153,33 +146,61 @@ const ParticipationPackage: React.FC = () => {
           </div>
         </Card>
 
+        
         <Card>
-          <h3 className="text-lg sm:text-xl font-semibold mb-3">How to Participate</h3>
-          <p className="mb-4">For stall reservations, registration details, and sponsorship opportunities, please contact:</p>
-          <ul className="space-y-3">
-            <li className="flex items-center gap-3">
-              <IconWrapper><Mail className="w-6 h-6" /></IconWrapper>
-              <span><strong>Email:</strong> anorajanka@gmail.com</span>
+          <h3 className="text-2xl sm:text-3xl font-semibold mb-6 flex items-center gap-4">
+            <GradientIconWrapper><Mail className="w-8 h-8" /></GradientIconWrapper>
+            How to Participate
+          </h3>
+          <p className="mb-6 text-lg sm:text-xl md:text-2xl">
+            For stall reservations, registration details, and sponsorship opportunities, please contact:
+          </p>
+          <ul className="space-y-5 text-lg sm:text-xl md:text-2xl">
+            <li className="flex items-center gap-4">
+              <IconWrapper><Mail className="w-7 h-7" /></IconWrapper>
+              <span><strong>Email:</strong> <span className="text-yellow-300 font-semibold">anorajanka@gmail.com</span></span>
             </li>
-            <li className="flex items-center gap-3">
-              <IconWrapper><Phone className="w-6 h-6" /></IconWrapper>
-              <span><strong>Hotline / WhatsApp:</strong> +94 777 193 834 / +971 52 938 3422</span>
+            <li className="flex items-center gap-4">
+              <IconWrapper><Phone className="w-7 h-7" /></IconWrapper>
+              <span><strong>Hotline / WhatsApp:</strong> <span className="text-yellow-300 font-semibold">+94 777 193 834 / +971 52 938 3422</span></span>
             </li>
-            <li className="flex items-center gap-3">
-              <IconWrapper><Globe className="w-6 h-6" /></IconWrapper>
-              <span><strong>Website:</strong> <a href="https://www.ayubowan-anora.com" className="underline text-white hover:text-yellow-300">www.ayubowan-anora.com</a></span>
+            <li className="flex items-center gap-4">
+              <IconWrapper><Globe className="w-7 h-7" /></IconWrapper>
+              <span>
+                <strong>Website:</strong>{" "}
+                <a
+                  href="https://www.ayubowan-anora.com"
+                  className="text-yellow-300 font-semibold underline hover:text-yellow-400"
+                >
+                  www.ayubowan-anora.com
+                </a>
+              </span>
             </li>
           </ul>
         </Card>
 
-        <Card>
-          <h3 className="text-lg sm:text-xl font-semibold mb-2">Presented by</h3>
-          <div className="flex items-center gap-3">
-            <IconWrapper><Building2 className="w-6 h-6" /></IconWrapper>
-            <strong>Anora Entertainment UAE & Sri Lanka</strong>
-          </div>
-          <p className="italic mt-1 text-sm sm:text-base">Empowering Sri Lankan Entrepreneurs for Global Success</p>
-        </Card>
+        
+       
+<Card>
+  <h3 className="text-2xl sm:text-3xl font-semibold mb-4">Presented by</h3>
+  <div className="flex items-center gap-4">
+    <div
+      className="flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-xl
+                 bg-gradient-to-br from-purple-500 to-blue-500 
+                 shadow-md hover:shadow-lg transition-all duration-300"
+    >
+      <Building2 className="w-7 h-7 text-white" />
+    </div>
+    <strong className="text-xl sm:text-2xl md:text-3xl">
+      Anora Entertainment UAE & Sri Lanka
+    </strong>
+  </div>
+  <p className="italic mt-2 text-lg sm:text-xl md:text-2xl text-gray-200">
+    Empowering Sri Lankan Entrepreneurs for Global Success
+  </p>
+</Card>
+
+
       </div>
     </section>
   );
