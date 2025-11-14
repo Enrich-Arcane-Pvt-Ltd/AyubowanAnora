@@ -14,52 +14,78 @@ const HeroSection = () => {
   ];
 
   return (
-    <section className="relative flex flex-col items-center justify-center bg-[#7028e4] text-white text-center py-28 sm:py-32 overflow-hidden">
+    <section className="relative flex flex-col items-center bg-gradient-to-r from-[#7228e4] to-[#2b6fdc] text-white py-16 sm:py-24 overflow-hidden">
+
       
-      {/* Image Row */}
       <div
-        className="relative z-10 flex justify-center items-center gap-4 sm:gap-6 md:gap-8 lg:gap-10 
-                   mb-16 sm:mb-20 md:mb-24 px-3 sm:px-6 translate-x-6 sm:translate-x-10 flex-wrap md:flex-nowrap"
+        className="
+          relative z-10 flex items-end justify-center
+          gap-3 sm:gap-5 md:gap-7 lg:gap-9 xl:gap-12
+          mb-12 sm:mb-16 md:mb-20
+          px-3 sm:px-6
+
+          /* small screens scroll, large screens centered */
+          w-full
+          overflow-x-auto no-scrollbar
+          whitespace-nowrap
+        "
       >
         {images.map((src, index) => (
           <div
             key={index}
-            className="relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500"
+            className="
+              relative overflow-hidden rounded-xl shadow-lg 
+              hover:shadow-2xl transition-all duration-500 inline-block
+
+              flex-shrink-0
+
+              /* refined responsive sizes to match screenshot */
+              w-[78px]  h-[170px]
+              xs:w-[95px] xs:h-[210px]
+              sm:w-[125px] sm:h-[280px]
+              md:w-[150px] md:h-[330px]
+              lg:w-[175px] lg:h-[390px]
+              xl:w-[195px] xl:h-[440px]
+
+              rotate-[1deg] sm:rotate-[2deg] md:rotate-[3deg]
+            "
             style={{
-              width: "clamp(140px, 22vw, 240px)",
-              height: "clamp(320px, 60vh, 520px)",
               clipPath: "polygon(10% 0, 100% 0, 90% 100%, 0 100%)",
-              border: "2.5px solid rgba(255,255,255,0.85)",
-              flexShrink: 0,
-              transform: `translateY(${index % 2 === 0 ? "-25px" : "25px"})`,
+              border: "2px solid rgba(255,255,255,0.75)",
             }}
           >
             <Image
               src={src}
               alt={`Image ${index + 1}`}
               fill
-              priority
               quality={100}
               className="object-cover transition-transform duration-700 hover:scale-110"
-              sizes="(max-width: 640px) 45vw, (max-width: 1024px) 30vw, (max-width: 1536px) 220px, 240px"
             />
           </div>
         ))}
       </div>
 
-      {/* Center Logo */}
-      <div className="relative z-10 flex justify-center w-full px-4">
+      
+      <div className="relative z-10 flex justify-center px-4 w-full">
         <Image
           src="/Images/img7.png"
           alt="Ayubowan Anora 2026 Logo"
-          width={760}
-          height={260}
+          width={900}
+          height={350}
           priority
-          quality={100}
-          className="object-contain drop-shadow-2xl transition-transform duration-700 hover:scale-105
-                     max-w-[90%] sm:max-w-[80%] md:max-w-[700px] lg:max-w-[760px]"
+          className="
+            object-contain drop-shadow-2xl transition-transform duration-700 hover:scale-105
+
+            w-[88%]
+            xs:w-[80%]
+            sm:w-[68%]
+            md:w-[58%]
+            lg:w-[50%]
+            xl:w-[42%]
+          "
         />
       </div>
+
     </section>
   );
 };
