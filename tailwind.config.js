@@ -4,70 +4,105 @@ module.exports = {
     "./app/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
+
   theme: {
     extend: {
       colors: {
-        
-        primaryBlue: "#7546FF",
-        darkGray: "#111111",
-        lightGray: "#d4d4d4",
-        deepNavy: "#16213d",
+        /* -------------------------------
+         *  BRAND COLORS (Your 4 Colors)
+         * ------------------------------- */
+        brand: {
+          purple: "#7546FF",   // Primary brand color
+          dark: "#111111",     // Black / Dark Grey
+          gray: "#D4D4D4",     // Soft Light Gray
+          navy: "#16213d",     // Deep Navy
+        },
 
-        
+        /* -------------------------------
+         *  TEMPLATE COLORS (from daevnt.vercel.app)
+         *  Matching premium UI palette
+         * ------------------------------- */
+
         purple: {
+          50:  "#faf5ff",
+          100: "#f3e8ff",
+          200: "#e9d5ff",
+          300: "#d8b4fe",
+          400: "#c084fc",
           500: "#a855f7",
           600: "#9333ea",
           700: "#7e22ce",
+          800: "#6b21a8",
+          900: "#581c87",
         },
+
         indigo: {
+          50:  "#eef2ff",
+          100: "#e0e7ff",
+          200: "#c7d2fe",
+          300: "#a5b4fc",
+          400: "#818cf8",
           500: "#6366f1",
           600: "#4f46e5",
           700: "#4338ca",
+          800: "#3730a3",
+          900: "#312e81",
         },
+
         blue: {
+          50:  "#eff6ff",
+          100: "#dbeafe",
+          200: "#bfdbfe",
+          300: "#93c5fd",
           400: "#60a5fa",
           500: "#3b82f6",
           600: "#2563eb",
-        },
-        yellow: {
-          300: "#fde047",
-          400: "#facc15",
-          600: "#ca8a04",
-        },
-        green: {
-          500: "#22c55e",
-        },
-        emerald: {
-          500: "#10b981",
-        },
-        orange: {
-          500: "#f97316",
+          700: "#1d4ed8",
+          800: "#1e40af",
+          900: "#1e3a8a",
         },
 
-        navpurple: {
-          1: "#2a0052",
-          2: "#3a0478",
-          3: "#4b0aa0",
+        pink: {
+          50: "#fdf2f8",
+          100: "#fce7f3",
+          200: "#fbcfe8",
+          300: "#f9a8d4",
+          400: "#f472b6",
+          500: "#ec4899",
+          600: "#db2777",
+          700: "#be185d",
+          800: "#9d174d",
+          900: "#831843",
         },
 
-       
-        hero: {
-          purple: "#7228e4",
-          blue: "#2b6fdc",
+        cyan: {
+          50: "#ecfeff",
+          100: "#cffafe",
+          200: "#a5f3fc",
+          300: "#67e8f9",
+          400: "#22d3ee",
+          500: "#06b6d4",
+          600: "#0891b2",
+          700: "#0e7490",
+          800: "#155e75",
+          900: "#164e63",
         },
 
-        
-        primary: {
-          100: "#E0FCFF",
-          200: "#B2F5F9",
-          300: "#80EAF3",
-          400: "#22D3EE",
-          500: "#0FBACF",
-          600: "#0897A8",
-          700: "#067783",
-          800: "#04555E",
-          900: "#03353A",
+        violet: {
+          100: "#E0D7FF",
+          200: "#C0AFFF",
+          300: "#A088FF",
+          400: "#8060FF",
+          500: "#6A4DFF",   // similar to the theme in your link
+          600: "#4B2EFF",
+          700: "#3A1EE6",
+          800: "#2A0FCC",
+          900: "#1D0799",
         },
+
+        /* -------------------------------
+         * ACCENT / NEUTRAL PALETTE
+         * ------------------------------- */
         accent: {
           100: "#F5F5F5",
           200: "#E5E5E5",
@@ -79,6 +114,7 @@ module.exports = {
           800: "#262626",
           900: "#171717",
         },
+
         light: {
           100: "#FFFFFF",
           200: "#FAFAFA",
@@ -90,21 +126,9 @@ module.exports = {
           800: "#999999",
           900: "#808080",
         },
-        error: {
-          100: "#FEECEC",
-          200: "#FDC8C8",
-          300: "#FB9E9E",
-          400: "#F97373",
-          500: "#F43F3F",
-          600: "#DC2626",
-          700: "#B91C1C",
-          800: "#991B1B",
-          900: "#7F1D1D",
-        },
-        black: "#000000",
-        white: "#FFFFFF",
       },
     },
   },
+
   plugins: [],
 };
