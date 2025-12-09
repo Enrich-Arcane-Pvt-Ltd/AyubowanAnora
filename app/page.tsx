@@ -1,18 +1,24 @@
 "use client";
 
-import React from "react";
-import HeroSection from "./Components/HeroSection";
-import AboutPage from "./Components/AboutPage";
-import ParticipationPackage from "./Components/ParticipationPackage";
-import Footer from "./Components/Footer";
+import AboutSection from "./Components/home/About";
+import FutureEvents from "./Components/home/FutureEvents";
+import HeroSection from "./Components/home/HeroSection";
+import InfoBar from "./Components/home/InfoBar";
+import Testimonials from "./Components/home/Testimonial";
+import TextTicker from "./Components/home/TextTicker";
 
 export default function Home() {
   return (
     <>
       <HeroSection />
-      <AboutPage />
-      <ParticipationPackage />
-      <Footer />
+      <InfoBar />
+      <AboutSection />
+      <TextTicker />
+      <FutureEvents />
+      {/* <Sponsors /> */}
+      <Testimonials />
+      {/* <ParticipationPackage /> */}
+      {/* <TestimonialSection /> */}
     </>
   );
 }
