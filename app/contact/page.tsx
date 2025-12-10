@@ -1,22 +1,17 @@
-// app/contact/page.tsx
-
 "use client";
 
-import { ChangeEvent, FormEvent, useState } from "react";
-// අවශ්‍ය Icons, lucide-react වලින් import කරන්න
 import { ArrowRight, Clock, MapPin, Phone, Send } from "lucide-react";
-import Image from "next/image"; // Next.js Image component එක භාවිතා කිරීමට
+import Image from "next/image";
+import { ChangeEvent, FormEvent, useState } from "react";
 
-// 1. Form Data Interface
 interface FormData {
-    firstName: string; // UI එකේ First Name / Last Name ලෙස වෙනස් කර ඇත
+    firstName: string;
     lastName: string;
     email: string;
     subject: string;
     message: string;
 }
 
-// 2. Status Type
 type FormStatus = "idle" | "submitting" | "success" | "error";
 
 export default function ContactPage() {
@@ -24,31 +19,27 @@ export default function ContactPage() {
         firstName: "",
         lastName: "",
         email: "",
-        subject: "General Inquiry", // Default value
+        subject: "General Inquiry",
         message: "",
     });
     const [status, setStatus] = useState<FormStatus>("idle");
     const [errorMessage, setErrorMessage] = useState<string>("");
 
-    // Input and TextArea Handling
     const handleChange = (
         e: ChangeEvent<
             HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
         >
     ) => {
-        // Dropdown (HTMLSelectElement) එකත් handle කිරීමට type එකට එකතු කරන ලදි
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    // Form Submission Handling
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setStatus("submitting");
         setErrorMessage("");
 
-        // API Route එකට යැවීමට object එක සකස් කිරීම
         const payload = {
-            name: `${formData.firstName} ${formData.lastName}`, // Full Name එකට එකතු කිරීම
+            name: `${formData.firstName} ${formData.lastName}`,
             email: formData.email,
             subject: formData.subject,
             message: formData.message,
@@ -67,7 +58,6 @@ export default function ContactPage() {
 
             if (response.ok) {
                 setStatus("success");
-                // Form එක හිස් කිරීම
                 setFormData({
                     firstName: "",
                     lastName: "",
@@ -86,7 +76,6 @@ export default function ContactPage() {
         }
     };
 
-    // 3. UI/JSX - ඔබේ කේතය form handling props සමඟ
     return (
         <main className="w-full pt-32 pb-20 text-white bg-brand-dark">
             <section className="px-6 mx-auto mb-20 text-center md:px-12 lg:px-20 max-w-7xl">
@@ -108,11 +97,8 @@ export default function ContactPage() {
 
             <section className="px-6 mx-auto mb-24 md:px-12 lg:px-20 max-w-7xl">
                 <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-24">
-                    {/* LEFT COLUMN: Contact Details and Image */}
                     <div className="space-y-12">
-                        {/* Contact Cards (unchanged from your code) */}
                         <div className="grid gap-8">
-                            {/* Headquarters Card */}
                             <div className="flex items-start gap-4 p-6 transition-colors border rounded-2xl bg-brand-card border-white/5 hover:border-brand-purple/50 group">
                                 <div className="flex items-center justify-center w-12 h-12 transition-colors rounded-full bg-brand-purple/10 text-brand-purple group-hover:bg-brand-purple group-hover:text-white shrink-0">
                                     <MapPin size={24} />
@@ -129,7 +115,6 @@ export default function ContactPage() {
                                 </div>
                             </div>
 
-                            {/* Contact Info Card */}
                             <div className="flex items-start gap-4 p-6 transition-colors border rounded-2xl bg-brand-card border-white/5 hover:border-brand-pink/50 group">
                                 <div className="flex items-center justify-center w-12 h-12 transition-colors rounded-full bg-brand-pink/10 text-brand-pink group-hover:bg-brand-pink group-hover:text-white shrink-0">
                                     <Phone size={24} />
@@ -147,7 +132,6 @@ export default function ContactPage() {
                                 </div>
                             </div>
 
-                            {/* Office Hours Card */}
                             <div className="flex items-start gap-4 p-6 transition-colors border rounded-2xl bg-brand-card border-white/5 hover:border-brand-blue/50 group">
                                 <div className="flex items-center justify-center w-12 h-12 transition-colors rounded-full bg-brand-blue/10 text-brand-blue group-hover:bg-brand-blue group-hover:text-white shrink-0">
                                     <Clock size={24} />
@@ -165,8 +149,6 @@ export default function ContactPage() {
                                 </div>
                             </div>
                         </div>
-
-                        {/* Image (Please ensure /Images/img1.jpg exists in your public folder) */}
                         <div className="relative hidden w-full h-64 overflow-hidden rounded-2xl lg:block">
                             <Image
                                 src="/Images/img1.jpg"
@@ -178,9 +160,7 @@ export default function ContactPage() {
                         </div>
                     </div>
 
-                    {/* RIGHT COLUMN: Form Logic Implementation */}
                     <div className="relative">
-                        {/* Background Glow */}
                         <div className="absolute top-10 right-10 w-96 h-96 bg-brand-purple/20 rounded-full blur-[100px] pointer-events-none" />
 
                         <div className="relative p-8 border shadow-2xl bg-brand-card border-white/10 md:p-10 rounded-3xl">
@@ -188,7 +168,6 @@ export default function ContactPage() {
                                 Send us a Message
                             </h3>
 
-                            {/* Success State */}
                             {status === "success" ? (
                                 <div className="flex flex-col items-center justify-center text-center h-96 animate-in fade-in">
                                     <div className="flex items-center justify-center w-20 h-20 mb-6 text-green-500 rounded-full bg-green-500/20">
@@ -209,12 +188,10 @@ export default function ContactPage() {
                                     </button>
                                 </div>
                             ) : (
-                                // Form State (Idle or Submitting or Error)
                                 <form
                                     onSubmit={handleSubmit}
                                     className="space-y-6"
                                 >
-                                    {/* First Name / Last Name */}
                                     <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                                         <div className="space-y-2">
                                             <label className="text-xs font-bold tracking-widest text-gray-500 uppercase">
@@ -223,7 +200,7 @@ export default function ContactPage() {
                                             <input
                                                 required
                                                 type="text"
-                                                name="firstName" // Name attribute එක set කරන්න
+                                                name="firstName"
                                                 value={formData.firstName}
                                                 onChange={handleChange}
                                                 placeholder="John"
@@ -237,7 +214,7 @@ export default function ContactPage() {
                                             <input
                                                 required
                                                 type="text"
-                                                name="lastName" // Name attribute එක set කරන්න
+                                                name="lastName"
                                                 value={formData.lastName}
                                                 onChange={handleChange}
                                                 placeholder="Doe"
@@ -246,7 +223,6 @@ export default function ContactPage() {
                                         </div>
                                     </div>
 
-                                    {/* Email Address */}
                                     <div className="space-y-2">
                                         <label className="text-xs font-bold tracking-widest text-gray-500 uppercase">
                                             Email Address
@@ -254,7 +230,7 @@ export default function ContactPage() {
                                         <input
                                             required
                                             type="email"
-                                            name="email" // Name attribute එක set කරන්න
+                                            name="email"
                                             value={formData.email}
                                             onChange={handleChange}
                                             placeholder="john@company.com"
@@ -262,13 +238,12 @@ export default function ContactPage() {
                                         />
                                     </div>
 
-                                    {/* Subject Dropdown */}
                                     <div className="space-y-2">
                                         <label className="text-xs font-bold tracking-widest text-gray-500 uppercase">
                                             Subject
                                         </label>
                                         <select
-                                            name="subject" // Name attribute එක set කරන්න
+                                            name="subject"
                                             value={formData.subject}
                                             onChange={handleChange}
                                             className="w-full px-4 py-3 text-gray-400 transition-colors border rounded-lg bg-brand-dark border-white/10 focus:border-brand-purple focus:outline-none"
@@ -284,7 +259,6 @@ export default function ContactPage() {
                                         </select>
                                     </div>
 
-                                    {/* Message */}
                                     <div className="space-y-2">
                                         <label className="text-xs font-bold tracking-widest text-gray-500 uppercase">
                                             Message
@@ -292,7 +266,7 @@ export default function ContactPage() {
                                         <textarea
                                             required
                                             rows={5}
-                                            name="message" // Name attribute එක set කරන්න
+                                            name="message"
                                             value={formData.message}
                                             onChange={handleChange}
                                             placeholder="How can we help you?"
@@ -300,12 +274,10 @@ export default function ContactPage() {
                                         ></textarea>
                                     </div>
 
-                                    {/* Error Message Display */}
                                     {status === "error" && (
                                         <p className="text-sm font-bold text-red-500">{`Submission Failed: ${errorMessage}`}</p>
                                     )}
 
-                                    {/* Submit Button */}
                                     <button
                                         type="submit"
                                         disabled={status === "submitting"}
@@ -329,7 +301,6 @@ export default function ContactPage() {
                 </div>
             </section>
 
-            {/* MAP SECTION (unchanged from your code) */}
             <section className="w-full h-[400px] bg-gray-900 relative">
                 <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2882.3856543204786!2d-79.33396602353386!3d43.74412097109794!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d4d2e1b1b1b1b1%3A0x1b1b1b1b1b1b1b1b!2s612-7%20Roanoke%20Rd%2C%20North%20York%2C%20ON%20M3A%201E3%2C%20Canada!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
