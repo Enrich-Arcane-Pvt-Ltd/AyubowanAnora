@@ -4,52 +4,54 @@ import Image from "next/image";
 import Link from "next/link";
 
 const events = [
+    // {
+    //     id: 1,
+    //     title: "The Future of AI Trends & Innovations",
+    //     location: "Main Auditorium, TechHub Conference Center",
+    //     date: "MARCH 15, 2025",
+    //     time: "10:00 AM – 12:00 PM",
+    //     image: "/Images/img1.jpg",
+    // },
+    // {
+    //     id: 2,
+    //     title: "Cybersecurity Protecting Data & Privacy",
+    //     location: "Room A2, TechHub Conference Center",
+    //     date: "MARCH 17, 2025",
+    //     time: "2:00 PM – 3:30 PM",
+    //     image: "/Images/img2.jpg",
+    // },
+    // {
+    //     id: 3,
+    //     title: "Blockchain & Web3 Beyond Cryptocurrency",
+    //     location: "Innovation Stage, TechHub Conference Center",
+    //     date: "MARCH 03, 2025",
+    //     time: "11:00 AM – 12:30 PM",
+    //     image: "/Images/img3.jpg",
+    // },
     {
         id: 1,
-        title: "The Future of AI Trends & Innovations",
-        location: "Main Auditorium, TechHub Conference Center",
-        date: "MARCH 15, 2025",
-        time: "10:00 AM – 12:00 PM",
-        image: "/Images/img1.jpg",
-    },
-    {
-        id: 2,
-        title: "Cybersecurity Protecting Data & Privacy",
-        location: "Room A2, TechHub Conference Center",
-        date: "MARCH 17, 2025",
-        time: "2:00 PM – 3:30 PM",
-        image: "/Images/img2.jpg",
-    },
-    {
-        id: 3,
-        title: "Blockchain & Web3 Beyond Cryptocurrency",
-        location: "Innovation Stage, TechHub Conference Center",
-        date: "MARCH 03, 2025",
-        time: "11:00 AM – 12:30 PM",
-        image: "/Images/img3.jpg",
-    },
-    {
-        id: 4,
-        title: "Global Leadership Business Summit",
-        location: "Auditorium, Tech Conference Center, New York, USA",
-        date: "MARCH 18, 2025",
-        time: "10:00 AM – 12:00 PM",
+        title: "Exhibition | Trade Fair | Book Fair",
+        location: "Etisalat Academy, Dubai, United Arab Emirates",
+        category: "Exhibition | Trade Fair | Book Fair",
+        date: "March 28th & 29th, 2026 (Saturday & Sunday)",
+        time: "10:00 AM – 10:00 PM",
         image: "/Images/trade-expo.jpg",
     },
+    // {
+    //     id: 5,
+    //     title: "Marketing & Branding Expo",
+    //     location: "TechHub Conference Center, London, UK",
+    //     date: "MARCH 13, 2025",
+    //     time: "2:00 PM – 3:30 PM",
+    //     image: "/Images/trade.jpg",
+    // },
     {
-        id: 5,
-        title: "Marketing & Branding Expo",
-        location: "TechHub Conference Center, London, UK",
-        date: "MARCH 13, 2025",
-        time: "2:00 PM – 3:30 PM",
-        image: "/Images/trade.jpg",
-    },
-    {
-        id: 6,
-        title: "Startup & Investment Summit",
-        location: "Innovation Stage, TechHub Center, Dubai, UAE",
-        date: "MARCH 08, 2025",
-        time: "11:00 AM – 12:30 PM",
+        id: 2,
+        title: "Sri Lanka Seminars",
+        location: "Sri Lanka",
+        category: "Literature & Education",
+        date: "JAN 03rd - FEB 08th",
+        time: "10:00 AM – 04:00 PM",
         image: "/Images/avatar-ceo.jpg",
     },
 ];
@@ -96,9 +98,11 @@ const EventsPage = () => {
                             </div>
 
                             <div className="flex flex-col gap-3 lg:col-span-4">
-                                <h3 className="mb-3 text-2xl font-bold leading-tight transition-all duration-300 md:text-3xl group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-brand-gradient">
-                                    {event.title}
-                                </h3>
+                                <Link href={`/events/${event.id}`}>
+                                    <h3 className="mb-3 text-2xl font-bold leading-tight transition-all duration-300 cursor-pointer md:text-3xl group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-brand-gradient">
+                                        {event.title}
+                                    </h3>
+                                </Link>
                                 <div className="flex items-start gap-2 text-sm text-gray-400">
                                     <span className="font-semibold text-gray-500">Location:</span>
                                     <span>{event.location}</span>
