@@ -18,63 +18,107 @@ export function generateEmailTemplate({
     phone
 }: EmailData): string {
 
+    const theme = {
+        bg: "#0a0a0f",
+        card: "#13131f",
+        text: "#ffffff",
+        textMuted: "#a1a1aa",
+        border: "#27273a",
+        accentPurple: "#8b5cf6",
+        accentPink: "#ec4899",
+        gradient: "linear-gradient(to right, #8b5cf6, #ec4899)"
+    };
+
+    const logoUrl = "cid:logoimg";
+
     return `
-    <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; background-color: #f4f4f4; padding: 20px;">
-        <div style="max-width: 600px; margin: 20px auto; padding: 20px; background: #ffffff; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body style="margin: 0; padding: 0; background-color: ${theme.bg}; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: ${theme.text};">
+        
+        <div style="background-color: ${theme.bg}; padding: 40px 0;">
             
-            <h1 style="color: #4a148c; text-align: center; border-bottom: 2px solid #e0e0e0; padding-bottom: 10px;">
-                ${eventTitle ? "New Event Inquiry" : "New Contact Submission"}
-            </h1>
-            
-            <p style="font-size: 16px;">Hello Admin,</p>
-            <p style="font-size: 16px;">You have received a new message from your website. Below are the details:</p>
-            
-            <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
-                <tr>
-                    <td style="padding: 10px; background-color: #f9f9f9; border-bottom: 1px solid #eee; width: 30%; font-weight: bold;">Name:</td>
-                    <td style="padding: 10px; border-bottom: 1px solid #eee;">${name}</td>
-                </tr>
-                <tr>
-                    <td style="padding: 10px; background-color: #f9f9f9; border-bottom: 1px solid #eee; font-weight: bold;">Email:</td>
-                    <td style="padding: 10px; border-bottom: 1px solid #eee;">${email}</td>
-                </tr>
+            <div style="max-width: 600px; margin: 0 auto; background-color: ${theme.card}; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.5); border: 1px solid ${theme.border};">
                 
-                ${/* Conditionally render Phone if it exists */
-        phone ? `
-                <tr>
-                    <td style="padding: 10px; background-color: #f9f9f9; border-bottom: 1px solid #eee; font-weight: bold;">Phone:</td>
-                    <td style="padding: 10px; border-bottom: 1px solid #eee;">${phone}</td>
-                </tr>` : ''}
+                <div style="height: 6px; background: ${theme.accentPurple}; background: ${theme.gradient};"></div>
+                
+                <div style="text-align: center; padding: 30px 20px 10px 20px;">
+                    <img src="cid:logoimg" alt="Logo" style="max-width: 150px; height: auto; display: block; margin: 0 auto;">
+                    
+                    <h2 style="color: ${theme.text}; margin-top: 25px; font-weight: 700; letter-spacing: 0.5px;">
+                        ${eventTitle ? "New Event Inquiry" : "New Contact Submission"}
+                    </h2>
+                </div>
 
-                ${/* Conditionally render Company if it exists */
-        company ? `
-                <tr>
-                    <td style="padding: 10px; background-color: #f9f9f9; border-bottom: 1px solid #eee; font-weight: bold;">Company:</td>
-                    <td style="padding: 10px; border-bottom: 1px solid #eee;">${company}</td>
-                </tr>` : ''}
+                <div style="padding: 30px;">
+                    
+                    <p style="color: ${theme.textMuted}; text-align: center; margin-bottom: 30px; line-height: 1.5;">
+                        Hello Admin, you received a new message via your website.
+                    </p>
 
-                ${/* Conditionally render Event Name (Specific to Inquiry Form) */
-        eventTitle ? `
-                <tr>
-                    <td style="padding: 10px; background-color: #f2e6ff; border-bottom: 1px solid #d1c4e9; font-weight: bold; color: #4a148c;">Interested Event:</td>
-                    <td style="padding: 10px; border-bottom: 1px solid #d1c4e9; background-color: #f2e6ff; font-weight: bold; color: #4a148c;">${eventTitle}</td>
-                </tr>` : ''}
+                    <table style="width: 100%; border-collapse: separate; border-spacing: 0; margin-bottom: 30px;">
+                        <tbody>
+                            ${eventTitle ? `
+                            <tr>
+                                <td style="padding: 12px 15px; border-bottom: 1px solid ${theme.border}; color: ${theme.accentPurple}; font-weight: bold; width: 35%;">Interested Event</td>
+                                <td style="padding: 12px 15px; border-bottom: 1px solid ${theme.border}; color: ${theme.text}; font-weight: bold;">${eventTitle}</td>
+                            </tr>` : ''}
 
-                <tr>
-                    <td style="padding: 10px; background-color: #f9f9f9; border-bottom: 1px solid #eee; font-weight: bold;">Subject:</td>
-                    <td style="padding: 10px; border-bottom: 1px solid #eee;">${subject}</td>
-                </tr>
-            </table>
+                            <tr>
+                                <td style="padding: 12px 15px; border-bottom: 1px solid ${theme.border}; color: ${theme.textMuted}; width: 35%;">Full Name</td>
+                                <td style="padding: 12px 15px; border-bottom: 1px solid ${theme.border}; color: ${theme.text}; font-weight: 500;">${name}</td>
+                            </tr>
+                            
+                            <tr>
+                                <td style="padding: 12px 15px; border-bottom: 1px solid ${theme.border}; color: ${theme.textMuted};">Email</td>
+                                <td style="padding: 12px 15px; border-bottom: 1px solid ${theme.border}; color: ${theme.text};">
+                                    <a href="mailto:${email}" style="color: ${theme.accentPink}; text-decoration: none;">${email}</a>
+                                </td>
+                            </tr>
 
-            <div style="border: 1px solid #e0e0e0; padding: 15px; border-radius: 4px; background-color: #fafafa;">
-                <h4 style="margin-top: 0; color: #4a148c;">Message:</h4>
-                <p style="white-space: pre-wrap; margin: 0;">${message}</p>
+                            ${phone ? `
+                            <tr>
+                                <td style="padding: 12px 15px; border-bottom: 1px solid ${theme.border}; color: ${theme.textMuted};">Phone</td>
+                                <td style="padding: 12px 15px; border-bottom: 1px solid ${theme.border}; color: ${theme.text};">${phone}</td>
+                            </tr>` : ''}
+
+                            ${company ? `
+                            <tr>
+                                <td style="padding: 12px 15px; border-bottom: 1px solid ${theme.border}; color: ${theme.textMuted};">Company</td>
+                                <td style="padding: 12px 15px; border-bottom: 1px solid ${theme.border}; color: ${theme.text};">${company}</td>
+                            </tr>` : ''}
+
+                            <tr>
+                                <td style="padding: 12px 15px; border-bottom: 1px solid ${theme.border}; color: ${theme.textMuted};">Subject</td>
+                                <td style="padding: 12px 15px; border-bottom: 1px solid ${theme.border}; color: ${theme.text};">${subject}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div style="background-color: #1a1a26; padding: 20px; border-radius: 8px; border-left: 4px solid ${theme.accentPurple};">
+                        <p style="margin: 0 0 10px 0; color: ${theme.textMuted}; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Message</p>
+                        <p style="margin: 0; color: ${theme.text}; line-height: 1.6; white-space: pre-wrap;">${message}</p>
+                    </div>
+
+                </div>
+
+                <div style="background-color: #0f0f18; padding: 20px; text-align: center; border-top: 1px solid ${theme.border};">
+                    <p style="margin: 0; color: ${theme.textMuted}; font-size: 13px;">
+                        © ${new Date().getFullYear()} Your Company Name. All rights reserved.
+                    </p>
+                </div>
+
             </div>
             
-            <p style="text-align: center; margin-top: 30px; font-size: 14px; color: #888;">
-                This message was sent from your website's ${eventTitle ? "Inquiry Form" : "Contact Form"}.
+            <p style="text-align: center; color: #555; font-size: 12px; margin-top: 20px;">
+                Automated System Notification
             </p>
         </div>
-    </div>
-  `;
+    </body>
+    </html>
+    `;
 }
