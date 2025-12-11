@@ -43,6 +43,13 @@ export async function POST(req) {
                 ? `New Event Inquiry: ${subject}` 
                 : `New Contact Form Submission: ${subject}`,
             html: emailHtml,
+            attachments: [
+        {
+            filename: "logo.png",
+            path: "./public/Images/img7.png",
+            cid: "logoimg"
+        }
+    ]
         };
 
         await transporter.sendMail(mailOptions);

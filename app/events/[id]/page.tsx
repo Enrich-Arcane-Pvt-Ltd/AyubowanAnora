@@ -16,6 +16,28 @@ import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 
+// Data structure specifically for the Table View (Event ID 2)
+const seminarSchedule = [
+    { no: "01", date: "Saturday, January 3, 2026", location: "COLOMBO" },
+    { no: "02", date: "Sunday, January 4, 2026", location: "GAMPAHA" },
+    { no: "03", date: "Saturday, January 10, 2026", location: "VEYANGODA" },
+    { no: "04", date: "Sunday, January 11, 2026", location: "KALUTHARA" },
+    { no: "05", date: "Saturday, January 17, 2026", location: "GALLE" },
+    { no: "06", date: "Sunday, January 18, 2026", location: "MATARA" },
+    { no: "07", date: "Saturday, January 24, 2026", location: "KURUNEGALA" },
+    { no: "08", date: "Sunday, January 25, 2026", location: "KANDY" },
+    { no: "09", date: "Saturday, January 31, 2026", location: "COLOMBO" },
+    { no: "10", date: "Sunday, February 1, 2026", location: "ANURADAPURA" },
+    { no: "11", date: "Saturday, February 7, 2026", location: "VAVUNIYA" },
+    { no: "12", date: "Sunday, February 8, 2026", location: "JAFFNA" },
+];
+
+const timeSlots = [
+    "10.00 AM - 11.00 AM",
+    "12.00 PM - 1.00 PM",
+    "3.00 PM - 4.00 PM"
+];
+
 const EventDetailsPage = () => {
     const params = useParams();
 
@@ -62,8 +84,9 @@ const EventDetailsPage = () => {
                 </p>
             </section>
 
-            <section className="max-w-5xl px-6 mx-auto mb-24 space-y-20">
+            <section className="max-w-6xl px-4 mx-auto mb-24 space-y-20 md:px-6">
 
+                {/* Event Image */}
                 <div className="relative w-full h-[300px] md:h-[500px] rounded-2xl overflow-hidden border border-white/10 group shadow-2xl">
                     <Image
                         src={event.image}
@@ -74,11 +97,13 @@ const EventDetailsPage = () => {
                     />
                 </div>
 
+                {/* About Section */}
                 <div className="pl-6 text-lg leading-relaxed text-gray-300 border-l-4 border-brand-purple">
                     <h3 className="mb-4 text-2xl font-bold text-white">About the Event</h3>
                     <p className="text-justify">{event.about}</p>
                 </div>
 
+                {/* Objectives & Highlights Grid */}
                 <div className="grid grid-cols-1 gap-12 md:grid-cols-2">
                     <div className="p-8 border bg-brand-card rounded-2xl border-white/5">
                         <h3 className="flex items-center gap-3 mb-6 text-xl font-bold text-white">
@@ -109,48 +134,106 @@ const EventDetailsPage = () => {
                     </div>
                 </div>
 
-                <div className="relative p-8 overflow-hidden border bg-brand-card border-brand-purple/30 rounded-3xl md:p-12">
-                    <div className="absolute top-0 right-0 w-64 h-64 bg-brand-purple/10 rounded-full blur-[80px] pointer-events-none"></div>
+                {/* --- CONDITIONAL SECTION START --- */}
+                {event.id === 2 ? (
+                    // ------------------ TABLE VIEW (MATCHING THE IMAGE) ------------------
+                    <div className="relative overflow-hidden border bg-brand-card border-brand-purple/30 rounded-3xl">
+                        <div className="absolute top-0 right-0 w-64 h-64 bg-brand-purple/10 rounded-full blur-[80px] pointer-events-none"></div>
 
-                    <h2 className="mb-2 text-3xl font-bold text-white">Entrepreneur Participation Package</h2>
-                    <p className="mb-10 text-gray-400">{event.packageDetails?.intro}</p>
+                        <div className="p-8 md:p-12">
+                            <h2 className="mb-2 text-3xl font-bold text-white">Full Seminar Schedule</h2>
+                            <p className="mb-8 text-gray-400">Island-wide itinerary for January & February 2026</p>
 
-                    <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-                        <div>
-                            <h4 className="flex items-center gap-2 mb-4 text-lg font-bold text-brand-purple">
-                                <Plane size={20} /> Travel & Stay
-                            </h4>
-                            <ul className="space-y-3 text-sm text-gray-300">
-                                {event.packageDetails?.travel.map((item, i) => (
-                                    <li key={i} className="flex gap-2"><span className="text-brand-purple">•</span> {item}</li>
-                                ))}
-                            </ul>
-                        </div>
-
-                        <div>
-                            <h4 className="flex items-center gap-2 mb-4 text-lg font-bold text-brand-purple">
-                                <Briefcase size={20} /> Exhibition Facilities
-                            </h4>
-                            <ul className="space-y-3 text-sm text-gray-300">
-                                {event.packageDetails?.facilities.map((item, i) => (
-                                    <li key={i} className="flex gap-2"><span className="text-brand-purple">•</span> {item}</li>
-                                ))}
-                            </ul>
-                        </div>
-
-                        <div>
-                            <h4 className="flex items-center gap-2 mb-4 text-lg font-bold text-brand-purple">
-                                <Megaphone size={20} /> Marketing
-                            </h4>
-                            <ul className="space-y-3 text-sm text-gray-300">
-                                {event.packageDetails?.marketing.map((item, i) => (
-                                    <li key={i} className="flex gap-2"><span className="text-brand-purple">•</span> {item}</li>
-                                ))}
-                            </ul>
+                            {/* Responsive Table Wrapper */}
+                            <div className="overflow-x-auto border border-white/10 rounded-xl">
+                                <table className="w-full text-sm text-left border-collapse min-w-[800px]">
+                                    <thead>
+                                        <tr className="text-xs tracking-wider text-white uppercase bg-brand-purple">
+                                            <th className="p-4 border-r border-white/10 text-center w-[60px]">No</th>
+                                            <th className="p-4 border-r border-white/10">Date</th>
+                                            <th className="p-4 border-r border-white/10">Location</th>
+                                            <th className="p-4 text-center">Schedule</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody className="divide-y divide-white/10">
+                                        {seminarSchedule.map((row, index) => (
+                                            <tr key={index} className="transition-colors bg-brand-card hover:bg-white/5">
+                                                {/* No */}
+                                                <td className="p-4 font-bold text-center border-r text-brand-pink border-white/10">
+                                                    {row.no}
+                                                </td>
+                                                {/* Date */}
+                                                <td className="p-4 font-medium text-white border-r border-white/10">
+                                                    {row.date}
+                                                </td>
+                                                {/* Location */}
+                                                <td className="p-4 font-bold border-r text-brand-blue border-white/10">
+                                                    {row.location}
+                                                </td>
+                                                {/* Schedule (Stacked Times) */}
+                                                <td className="p-2 text-center">
+                                                    <div className="flex flex-col gap-1">
+                                                        {timeSlots.map((time, tIndex) => (
+                                                            <div key={tIndex} className="px-3 py-1 text-xs text-gray-300 border rounded bg-white/5 border-white/5">
+                                                                {time}
+                                                            </div>
+                                                        ))}
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
-                </div>
+                ) : (
+                    // ------------------ STANDARD PARTICIPATION PACKAGE VIEW ------------------
+                    <div className="relative p-8 overflow-hidden border bg-brand-card border-brand-purple/30 rounded-3xl md:p-12">
+                        <div className="absolute top-0 right-0 w-64 h-64 bg-brand-purple/10 rounded-full blur-[80px] pointer-events-none"></div>
 
+                        <h2 className="mb-2 text-3xl font-bold text-white">Entrepreneur Participation Package</h2>
+                        <p className="mb-10 text-gray-400">{event.packageDetails?.intro}</p>
+
+                        <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+                            <div>
+                                <h4 className="flex items-center gap-2 mb-4 text-lg font-bold text-brand-purple">
+                                    <Plane size={20} /> Travel & Stay
+                                </h4>
+                                <ul className="space-y-3 text-sm text-gray-300">
+                                    {event.packageDetails?.travel.map((item, i) => (
+                                        <li key={i} className="flex gap-2"><span className="text-brand-purple">•</span> {item}</li>
+                                    ))}
+                                </ul>
+                            </div>
+
+                            <div>
+                                <h4 className="flex items-center gap-2 mb-4 text-lg font-bold text-brand-purple">
+                                    <Briefcase size={20} /> Exhibition Facilities
+                                </h4>
+                                <ul className="space-y-3 text-sm text-gray-300">
+                                    {event.packageDetails?.facilities.map((item, i) => (
+                                        <li key={i} className="flex gap-2"><span className="text-brand-purple">•</span> {item}</li>
+                                    ))}
+                                </ul>
+                            </div>
+
+                            <div>
+                                <h4 className="flex items-center gap-2 mb-4 text-lg font-bold text-brand-purple">
+                                    <Megaphone size={20} /> Marketing
+                                </h4>
+                                <ul className="space-y-3 text-sm text-gray-300">
+                                    {event.packageDetails?.marketing.map((item, i) => (
+                                        <li key={i} className="flex gap-2"><span className="text-brand-purple">•</span> {item}</li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                )}
+                {/* --- CONDITIONAL SECTION END --- */}
+
+                {/* Benefits & Eligibility */}
                 <div className="grid grid-cols-1 gap-12 md:grid-cols-2">
                     <div>
                         <h3 className="mb-6 text-xl font-bold text-white">Benefits to Participants</h3>
@@ -178,6 +261,7 @@ const EventDetailsPage = () => {
                     </div>
                 </div>
 
+                {/* Event Summary Table */}
                 <div>
                     <h3 className="mb-6 text-2xl font-bold text-white">Event Summary</h3>
                     <div className="overflow-hidden border border-white/10 rounded-xl">
@@ -226,7 +310,8 @@ const EventDetailsPage = () => {
                 <div className="relative z-10 max-w-4xl px-6 mx-auto text-center">
                     <span className="block mb-4 text-sm font-bold tracking-widest uppercase text-brand-purple">How to Participate</span>
                     <h2 className="mb-8 text-3xl font-bold text-white md:text-5xl">
-                        Reserve Your Stall Today
+                        {event.id === 2 ? "Reserve Your Seat" : "Reserve Your Stall Today"}
+
                     </h2>
 
                     <div className="flex flex-col justify-center gap-8 mb-12 text-left md:flex-row md:text-center">
