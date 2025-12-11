@@ -8,7 +8,7 @@ import { useState } from "react";
 const slides = [
   {
     id: 1,
-    image: "/Images/trade.jpg",
+    image: "/Images/background-1.jpg",
     titleLine1: "GLOBAL",
     titleLine2: "TRADE EXPO",
     // Adapted "Speaker" to be a Keynote or Special Guest
@@ -16,14 +16,28 @@ const slides = [
   },
   {
     id: 2,
-    image: "/Images/book-fair.jpg",
+    image: "/Images/background-2.jpg",
     titleLine1: "INTERNATIONAL",
     titleLine2: "BOOK FAIR",
     speakerAvatar: "/Images/avatar-author.jpg",
   },
   {
     id: 3,
-    image: "/Images/innovative.jpg",
+    image: "/Images/background-3.jpg",
+    titleLine1: "AUTOMOTIVE",
+    titleLine2: "INNOVATION",
+    speakerAvatar: "/Images/avatar-designer.jpg",
+  },
+  {
+    id: 3,
+    image: "/Images/background-4.jpg",
+    titleLine1: "AUTOMOTIVE",
+    titleLine2: "INNOVATION",
+    speakerAvatar: "/Images/avatar-designer.jpg",
+  },
+  {
+    id: 3,
+    image: "/Images/background-6.jpg",
     titleLine1: "AUTOMOTIVE",
     titleLine2: "INNOVATION",
     speakerAvatar: "/Images/avatar-designer.jpg",
@@ -55,7 +69,7 @@ const HeroSection = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="absolute inset-0 z-0"
         >
-          <div className="absolute inset-0 z-10 bg-black/40" /> {/* Slightly darker overlay for text readability */}
+          <div className="absolute inset-0 z-10 bg-black/40" />
           <Image
             src={slide.image}
             alt={`${slide.titleLine1} ${slide.titleLine2}`}
